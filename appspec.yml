@@ -1,0 +1,18 @@
+version: 0.0 #版本
+os: linux #使用的OS
+files: #要複製到deployment group instance裡的檔案
+  - source: / #"/":全部檔案
+    destination: /home/ec2-user/deploy #目的地檔案路徑
+hooks:
+  ApplicationStop: 
+    - location: stop_service.sh
+      timeout: 30
+      runas: ec2-user
+  BeforeInstall: 
+    - location: build_service.sh
+      timeout: 120
+      runas: ec2-user
+  ApplicationStart: 
+    - location: start_service.sh
+      timeout: 120
+      runas: ec2-user

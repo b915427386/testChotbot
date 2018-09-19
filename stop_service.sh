@@ -1,11 +1,11 @@
 
 #!/bin/bash
 echo "stop service container "
+cd /home/ec2-user/deploy
 pversion=`cat VERSION|cut -d ';' -f 2`
 version=`cat VERSION|cut -d ';' -f 1`
-docker_compose_file="$pversion/docker-compose.yml"
 echo "remove container "
-docker-compose -f $docker_compose_file rm -sf
+docker-compose -f $version/docker-compose.yml rm -sf
 echo "re-tag image "
 docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:latest 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:$pversion
 docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:latest 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:$pversion

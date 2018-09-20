@@ -1,4 +1,3 @@
-
 #!/bin/bash
 cd /home/ec2-user/deploy
 echo "Running service container "

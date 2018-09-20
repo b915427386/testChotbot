@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ec2-user/testChotbot
+cd /home/ec2-user/deploy
 echo "Running service container "
 version=`cat VERSION|cut -d ';' -f 1`
 docker-compose -f $version/docker-compose.yml up -d
@@ -18,7 +18,7 @@ do
     docker rmi 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/redis:$pversion
     docker rmi 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/jupyter:$pversion
     docker rmi 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/ngrok:$pversion
-    echo "service deploy success !!" > /home/ec2-user/testChotbot/updateTime
+    echo "service deploy success !!" > /home/ec2-user/deploy/updateTime
     break
   fi
   if [ $i == 2 ];then
@@ -34,7 +34,7 @@ do
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/jupyter:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/jupyter:latest
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/ngrok:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/ngrok:latest
     docker-compose -f $pversion/docker-compose.yml up -d
-    echo "service deploy fail QQ" > /home/ec2-user/testChotbot/updateTime
+    echo "service deploy fail QQ" > /home/ec2-user/deploy/updateTime
   fi
 done
-date >> /home/ec2-user/testChotbot/updateTime
+date >> /home/ec2-user/deploy/updateTime

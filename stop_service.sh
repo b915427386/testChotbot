@@ -2,8 +2,8 @@
 #!/bin/bash
 echo "stop service container "
 cd /home/ec2-user
-sudo chown -R ec2-user:ec2-user deploy/
-cd /home/ec2-user/deploy
+git clone https://github.com/b915427386/testChotbot/commits/master
+cd /home/ec2-user/testChotbot
 pversion=`cat VERSION|cut -d ';' -f 2`
 version=`cat VERSION|cut -d ';' -f 1`
 echo "remove container "

@@ -1,6 +1,7 @@
 
 #!/bin/bash
 echo "stop service container "
+cd /home/ec2-user
 sudo chown -R ec2-user:ec2-user deploy/
 cd /home/ec2-user/deploy
 pversion=`cat VERSION|cut -d ';' -f 2`

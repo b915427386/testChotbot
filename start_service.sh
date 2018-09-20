@@ -30,7 +30,8 @@ do
     pversion=`cat VERSION|cut -d ';' -f 2`
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:latest
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:latest
-    docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/redis:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/redis:latest
+    docker tag 204065533127.dkr.ecr.ap-north-east1.amazonaws.com/redis:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/redis:latest
+y
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/jupyter:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/jupyter:latest
     docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/ngrok:$pversion 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/ngrok:latest
     docker-compose -f $pversion/docker-compose.yml up -d

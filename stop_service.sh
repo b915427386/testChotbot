@@ -5,7 +5,8 @@ cd /home/ec2-user/deploy
 pversion=`cat VERSION|cut -d ';' -f 2`
 version=`cat VERSION|cut -d ';' -f 1`
 echo "remove container "
-docker-compose -f $version/docker-compose.yml rm -sf
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
 echo "re-tag image "
 docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:latest 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/api:$pversion
 docker tag 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:latest 204065533127.dkr.ecr.ap-northeast-1.amazonaws.com/mysql:$pversion

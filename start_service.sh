@@ -1,13 +1,12 @@
 
 #!/bin/bash
 cd /home/ec2-user/deploy
-version=`cat VERSION|cut -d ';' -f 1`
 echo "Running service container "
 docker-compose -f $version/docker-compose.yml up -d
 echo "Testing service container "
-touch /home/ec2-user/containerLog
-sudo docker ps > /home/ec2-user/containerLog
-containerNum=`cat /home/ec2-user/containerLog|wc -l`
+touch /home/ec2-user/container_log
+docker ps > /home/ec2-user/container_log
+containerNum=`cat /home/ec2-user/container_log|wc -l`
 for ((i=0;i<3;i++))
 do
   sleep 5
@@ -22,4 +21,4 @@ do
     break
   fi
 done
-
+date '+%Y%m%d%H%M%S' > /home/ec2-user/deploy/updateTime

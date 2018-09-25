@@ -58,3 +58,4 @@ services:
     ports:
       - "4040:4040"
     command: ngrok http chatbot_jupyter:5000
+#test ver0.02
